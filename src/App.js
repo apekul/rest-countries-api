@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import staticData from "./data.json";
-
 // react router
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -9,16 +7,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Homepage from "./Components/Homepage";
+import CountriePage from "./Components/CountriePage/CountriePage";
 
 // Task link:
 // https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca
 
-// Countries APi:
-// https://restcountries.com/v3.1/all
-
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-  const [countries, setCountries] = useState([]);
 
   // apply dark theme
   useEffect(() => {
@@ -30,10 +25,11 @@ function App() {
 
   return (
     <Router>
-      <section className="bg-[#FAFAFA] dark:bg-[#202D36] text-[#0C1013] dark:text-[#F5F5F3]">
+      <section className="flex flex-col min-h-screen bg-[#FAFAFA] dark:bg-[#202D36] text-[#0C1013] dark:text-[#F5F5F3]">
         <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/:name" element={<CountriePage />} />
         </Routes>
         <Footer />
       </section>
