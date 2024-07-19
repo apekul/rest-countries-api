@@ -6,16 +6,19 @@ function Homepage() {
   return (
     <section className="paddingX flex-1 h-screen py-10">
       {/* Search bar */}
-      <ul className="flex items-center justify-between">
+      <ul className="flex items-center justify-between  dark:text-[#F5F5F3]">
         <li className="relative">
-          <IoMdSearch className="absolute top-3.5 left-[1.5rem] text-xl" />
+          <IoMdSearch className="absolute top-4 left-[1.5rem] text-2xl" />
           <input
-            className="p-3 pl-[4rem] w-[30rem] rounded-md shadow-md"
+            className="p-4 pl-[4rem] w-[30rem] rounded-md shadow-md  dark:bg-[#2B3743]"
             placeholder="Search for a country..."
           />
         </li>
         <li>
-          <select name="regions" className="cursor-pointer p-3 shadow-md">
+          <select
+            name="regions"
+            className="cursor-pointer p-4 shadow-md dark:bg-[#2B3743] rounded-md"
+          >
             <option value="" default className="cursor-pointer">
               Filter by Region
             </option>
