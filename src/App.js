@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import staticData from "./data.json";
+
 // react router
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
