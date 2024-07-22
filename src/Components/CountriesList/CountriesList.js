@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 const CountriesList = ({ countries }) => {
   const navigate = useNavigate();
 
-  const navigateToCountry = (name) => {
-    navigate(`/${name}`);
+  const navigateToCountry = (name, country) => {
+    navigate(`/${name}`, { state: { country } });
   };
   return (
     <section className="my-10">
@@ -13,7 +13,7 @@ const CountriesList = ({ countries }) => {
         {countries.map((country, index) => (
           <li
             key={index}
-            onClick={() => navigateToCountry(country.name)}
+            onClick={() => navigateToCountry(country.name.common, country)}
             className="bg-white dark:bg-[#2B3743] flex flex-col rounded-md h-[25rem] shadow-md cursor-pointer hover:brightness-105 transition-all duration-150"
           >
             <img
@@ -22,7 +22,7 @@ const CountriesList = ({ countries }) => {
               className="rounded-t-md w-full h-1/2 object-cover"
             />
             <span className="p-8 flex flex-col gap-3">
-              <p className="font-bold text-2xl">{country.name}</p>
+              <p className="font-bold text-2xl">{country.name.common}</p>
               <span>
                 <p>
                   <span className="">Population:</span>
