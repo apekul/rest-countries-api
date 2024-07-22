@@ -1,11 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { IoMoonOutline, IoMoonSharp } from "react-icons/io5";
 
 const Navbar = ({ darkMode, setDarkMode }) => {
+  const navigate = useNavigate();
   return (
     <nav className="flex justify-center w-full bg-white dark:bg-[#2B3743] shadow-md select-none ">
       <div className="container w-full flex items-center justify-between py-6 ">
-        <h1 className="text-2xl font-[800]">Where in the world?</h1>
+        <h1
+          className="text-2xl font-[800] cursor-pointer hover:text-blue-400 transition-all duration-150"
+          onClick={() => navigate("/")}
+        >
+          Where in the world?
+        </h1>
         <ul>
           {!darkMode ? (
             <li
