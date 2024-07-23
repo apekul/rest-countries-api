@@ -94,7 +94,7 @@ function CountriePage() {
 
   return (
     <section className="flex-1 flex justify-center">
-      <div className="container py-20">
+      <div className="container my-10 xl:my-20">
         <button
           onClick={() => navigate(-1)}
           className="bg-[#FFFFFF] dark:bg-[#2B3743] flex items-center gap-3 px-8 py-2 rounded-md shadow-md transition-all duration-150 hover:brightness-95 dark:hover:brightness-105"
@@ -113,22 +113,22 @@ function CountriePage() {
         )}
 
         {!loading && !error && countryData && (
-          <ul className="flex items-center justify-between my-20 gap-32">
+          <ul className="flex flex-col lg:flex-row items-center sm:items-start 2xl:items-center justify-between my-10 xl:my-20 gap-10 2xl:gap-32">
             <li>
               <img
                 src={countryData.flags.svg}
                 alt="country_flag"
-                className="object-cover w-[35rem] h-[25rem]"
+                className="object-cover w-full lg:w-[25rem] h-[15rem] lg:h-[20rem] xl:w-[35rem] xl:h-[25rem]"
               />
             </li>
             <li className="flex-1 text-[#111214] dark:text-[#F8FDFD]">
               <p className="font-[800] text-3xl mb-10 ">
                 {countryData.name.common}
               </p>
-              <span className="flex gap-32">
-                <span className="mb-20 flex flex-col gap-1">
+              <span className="flex flex-col sm:flex-row gap-10 2xl:gap-32">
+                <span className="mb-0 sm:mb-20 flex flex-col gap-1">
                   <p>
-                    <span className=" font-[800]">Native Name:</span>{" "}
+                    <span className="font-[800]">Native Name:</span>{" "}
                     {Object.values(countryData.name.nativeName)[0].common}
                   </p>
                   <p>
@@ -179,7 +179,7 @@ function CountriePage() {
                   </span>
                 </span>
               </span>
-              <span className="flex items-start gap-5">
+              <span className="flex flex-col md:flex-row items-start gap-5 mt-10 sm:mt-0">
                 <p className="font-[800] text-nowrap">Border Countries:</p>
                 <span className="flex items-start flex-wrap gap-5">
                   {borders?.map((border, index) => (

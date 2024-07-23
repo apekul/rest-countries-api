@@ -63,13 +63,13 @@ function Homepage() {
 
   return (
     <section className="flex-1 flex justify-center">
-      <div className="container py-10 ">
+      <div className="container py-10 w-full">
         {/* Search bar */}
-        <ul className="flex items-center justify-between  dark:text-[#F5F5F3]">
-          <li className="relative">
+        <ul className="flex flex-col lg:flex-row lg:items-center justify-between dark:text-[#F5F5F3]">
+          <li className="relative w-full">
             <IoMdSearch className="absolute top-4 left-[1.5rem] text-2xl" />
             <input
-              className="p-4 px-[4rem] w-[30rem] rounded-md shadow-md  dark:bg-[#2B3743]"
+              className="p-4 px-[4rem] w-full lg:w-[30rem] rounded-md shadow-md  dark:bg-[#2B3743]"
               placeholder="Search for a country..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -86,7 +86,7 @@ function Homepage() {
           <li>
             <select
               name="regions"
-              className="relative border-r-[16px] border-white dark:border-[#2B3743] cursor-pointer p-4 pl-4 pr-10 shadow-md dark:bg-[#2B3743] rounded-md mx-2 my-4 bg-white "
+              className="relative border-r-[16px] border-white dark:border-[#2B3743] cursor-pointer p-4 pl-4 pr-10 shadow-md dark:bg-[#2B3743] rounded-md  my-4 bg-white "
               value={selectedRegion}
               onChange={(e) => setSelectedRegion(e.target.value)}
             >

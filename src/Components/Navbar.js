@@ -8,12 +8,12 @@ const Navbar = ({ darkMode, setDarkMode }) => {
     <nav className="flex justify-center w-full bg-white dark:bg-[#2B3743] shadow-md select-none ">
       <div className="container w-full flex items-center justify-between py-6 ">
         <h1
-          className="text-2xl font-[800] cursor-pointer hover:text-blue-400 transition-all duration-150"
+          className="md:text-2xl font-[800] cursor-pointer hover:text-blue-400 transition-all duration-150"
           onClick={() => navigate("/")}
         >
           Where in the world?
         </h1>
-        <ul>
+        <ul className="text-sm md:text-base">
           {!darkMode ? (
             <li
               className="flex items-center gap-3 cursor-pointer"
