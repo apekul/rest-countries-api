@@ -28,4 +28,5 @@ Users should be able to:
 
 - [React](https://reactjs.org/) - JS library
 - [Tailwind CSS](https://tailwindcss.com/) - For styles
+- [React-Router](https://reactrouter.com/en/main) - For routing
 - [Lodash](https://lodash.com/docs/4.17.15#debounce) - to limit the API call rate
