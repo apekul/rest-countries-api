@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { IoMdSearch } from "react-icons/io";
 import CountriesList from "./CountriesList/CountriesList";
-
+import debounce from "lodash.debounce";
 // Static data
 import staticData from "../data.json";
 
@@ -14,27 +14,49 @@ function Homepage() {
   // TODO: Create filter by regions function
   const [countries, setCountries] = useState(staticData);
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState("");
+  const [filteredCountries, setFilteredCountries] = useState([]);
+
+  // Status
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // regions
   const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
-  // Search query and set Countries
+  const fetchCountries = async (query = "", region = "") => {
+    setLoading(true);
+    setError(null);
+    try {
+      let url = "https://restcountries.com/v3.1/all";
+      if (query.trim()) {
+        url = `https://restcountries.com/v3.1/name/${query.trim()}`;
+      } else if (region) {
+        url = `https://restcountries.com/v3.1/region/${region}`;
+      }
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setCountries(data);
+    } catch (error) {
+      console.log("Error fetching data:", error);
+      setError("Failed to fetch data.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const debouncedFetchCountries = useCallback(
+    debounce((query, region) => {
+      fetchCountries(query, region);
+    }, 500),
+    []
+  );
   useEffect(() => {
-    const getCountries = async () => {
-      let url;
-      if (searchQuery.trim()) {
-        url = `https://restcountries.com/v3.1/name/${searchQuery.trim()}`;
-      } else {
-        url = "https://restcountries.com/v3.1/all";
-      }
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        return setCountries(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getCountries();
-  }, [searchQuery]);
+    debouncedFetchCountries(searchQuery, selectedRegion);
+  }, [searchQuery, selectedRegion, debouncedFetchCountries]);
 
   return (
     <section className="flex-1 flex justify-center">
@@ -66,7 +88,8 @@ function Homepage() {
             </select>
           </li>
         </ul>
-
+        {loading && <p>Loading...</p>}
+        {error && <p>{error}</p>}
         <CountriesList countries={countries} />
       </div>
     </section>
