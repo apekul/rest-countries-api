@@ -10,7 +10,7 @@ const CountriesList = ({ countries }) => {
   return (
     <section className="my-10">
       {/* <ul className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-20"> */}
-      <ul className="grid items-center justify-center gap-8 sm:grid-cols-2 md:gap-14 lg:grid-cols-3 xl:gap-14 2xl:grid-cols-4 2xl:gap-20">
+      <ul className="grid items-center justify-center gap-8 sm:grid-cols-2 md:gap-14 lg:grid-cols-3 xl:gap-16 2xl:grid-cols-4 2xl:gap-20">
         {countries.map((country, index) => (
           <li
             key={index}

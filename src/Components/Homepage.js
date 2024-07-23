@@ -66,7 +66,7 @@ function Homepage() {
       <div className="container py-10 w-full">
         {/* Search bar */}
         <ul className="flex flex-col lg:flex-row lg:items-center justify-between dark:text-[#F5F5F3]">
-          <li className="relative w-full">
+          <li className="relative w-auto">
             <IoMdSearch className="absolute top-4 left-[1.5rem] text-2xl" />
             <input
               className="p-4 px-[4rem] w-full lg:w-[30rem] rounded-md shadow-md  dark:bg-[#2B3743]"

@@ -13,7 +13,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
         >
           Where in the world?
         </h1>
-        <ul className="text-sm md:text-base">
+        <ul className="text-sm md:text-base hover:text-blue-400">
           {!darkMode ? (
             <li
               className="flex items-center gap-3 cursor-pointer"
