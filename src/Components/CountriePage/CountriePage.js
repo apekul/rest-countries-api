@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+
+// Icons
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { MdError } from "react-icons/md";
+
+// Components
+import Loading from "../Utils/loading";
 
 // Get single Country data by country name
 const fetchCountryData = async (countryName) => {
@@ -97,12 +103,14 @@ function CountriePage() {
           <p>Back</p>
         </button>
 
-        {/* TODO: Add loading animation */}
-        {loading && <p>Loading...</p>}
-        {/* TODO: Add error display style */}
-        {error && <p>{error}</p>}
-        {/* TODO: Add not found error style */}
-        {!loading && !error && !countryData && <p>Country data not found.</p>}
+        {loading && <Loading />}
+
+        {error && (
+          <div className="my-2 flex items-center gap-2 text-red-200">
+            <MdError className="text-yellow-200" />
+            {error}
+          </div>
+        )}
 
         {!loading && !error && countryData && (
           <ul className="flex items-center justify-between my-20 gap-32">
