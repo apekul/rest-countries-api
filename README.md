@@ -21,7 +21,7 @@ Users should be able to:
 
 ## Demo
 
-- [Demo URL](https://apekul.github.io/multi-step-form-main/)
+- [Demo URL](https://apekul.github.io/rest-countries-api/)
 
 
 ## Built With
