@@ -13,14 +13,20 @@ import CountriePage from "./Components/CountriePage/CountriePage";
 // https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem("darkMode");
+    return savedMode !== null ? JSON.parse(savedMode) : false;
+  });
 
-  // apply dark theme
+  // update and apply current theme
   useEffect(() => {
     const root = window.document.documentElement;
-    if (darkMode) return root.classList.add("dark");
-    root.classList.remove("dark");
-    // store darkMode in localStorage to prevent theme from switching back to default
+    if (darkMode) {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
   }, [darkMode]);
 
   return (

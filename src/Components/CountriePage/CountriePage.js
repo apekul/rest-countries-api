@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
+// Get single Country data by country name
 const fetchCountryData = async (countryName) => {
   try {
     const response = await fetch(
@@ -16,6 +17,7 @@ const fetchCountryData = async (countryName) => {
   }
 };
 
+// Get country name by Alpha-3 code
 const getFullNameByCode = async (code) => {
   try {
     const response = await fetch(
@@ -48,7 +50,6 @@ function CountriePage() {
 
       try {
         let countryData;
-
         if (location.state?.country) {
           countryData = location.state.country;
         } else if (name) {
@@ -96,8 +97,11 @@ function CountriePage() {
           <p>Back</p>
         </button>
 
+        {/* TODO: Add loading animation */}
         {loading && <p>Loading...</p>}
+        {/* TODO: Add error display style */}
         {error && <p>{error}</p>}
+        {/* TODO: Add not found error style */}
         {!loading && !error && !countryData && <p>Country data not found.</p>}
 
         {!loading && !error && countryData && (
