@@ -3,19 +3,16 @@ import { IoMdSearch } from "react-icons/io";
 import CountriesList from "./CountriesList/CountriesList";
 import debounce from "lodash.debounce";
 // Static data
-import staticData from "../data.json";
+// import staticData from "../data.json";
 
 // all:     https://restcountries.com/v3.1/all
 // name:    https://restcountries.com/v3.1/name/deutschland
 // region:  https://restcountries.com/v3.1/region/europe
 
 function Homepage() {
-  // TODO: Create search function to get countries all
-  // TODO: Create filter by regions function
-  const [countries, setCountries] = useState(staticData);
+  const [countries, setCountries] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedRegion, setSelectedRegion] = useState("");
-  const [filteredCountries, setFilteredCountries] = useState([]);
 
   // Status
   const [loading, setLoading] = useState(false);
@@ -76,6 +73,8 @@ function Homepage() {
             <select
               name="regions"
               className="cursor-pointer p-4 shadow-md dark:bg-[#2B3743] rounded-md"
+              value={selectedRegion}
+              onChange={(e) => setSelectedRegion(e.target.value)}
             >
               <option value="" hidden default>
                 Filter by Region
