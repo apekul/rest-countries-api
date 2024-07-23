@@ -30,12 +30,13 @@ function App() {
   }, [darkMode]);
 
   return (
-    <Router>
+    <Router basename="/rest-countries-api">
       <section className="flex flex-col min-h-screen bg-[#FAFAFA] dark:bg-[#202D36] text-[#0C1013] dark:text-[#F5F5F3]">
         <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/:name" element={<CountriePage />} />
+          <Route path="*" element={<Homepage />} />
         </Routes>
         <Footer />
       </section>
